@@ -1,4 +1,0 @@
-<launch>
-  <node name="stella_md_node" pkg="stella_md"  type="stella_md_node" output="screen">
-  </node>
-</launch>
