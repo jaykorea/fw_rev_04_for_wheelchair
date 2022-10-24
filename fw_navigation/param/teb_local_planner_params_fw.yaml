@@ -17,11 +17,11 @@ TebLocalPlannerROS:
 
  # Robot
          
- max_vel_x: 1 # default 0.25
- max_vel_x_backwards: 0.2
- max_vel_theta: 0.25 # default 0.45
- acc_lim_x: 0.13 # default 0.5
- acc_lim_theta: 0.13 # default : 0.4
+ max_vel_x: 1.0 # default 0.25
+ max_vel_x_backwards: 0.25
+ max_vel_theta: 0.45 # default 0.45
+ acc_lim_x: 0.105 # default 0.5 (0.085 dont touch 안그럼 까딱까딱거림)
+ acc_lim_theta: 0.105 # default : 0.4
  min_turning_radius: 0
  footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
   type: "polygon" #"line"
@@ -37,12 +37,16 @@ TebLocalPlannerROS:
 
  # GoalTolerance
     
- xy_goal_tolerance: 0.75
- yaw_goal_tolerance: 0.75
- trans_stopped_vel: 0.1
- theta_stopped_vel: 0.01
+ xy_goal_tolerance: 0.9
+ yaw_goal_tolerance: 0.85
+ trans_stopped_vel: 0.2
+ theta_stopped_vel: 0.2
  free_goal_vel: False
- complete_global_plan: False     
+ complete_global_plan: true
+ divergence_detection_enable: true
+ divergence_detection_max_chi_squared: 50.0
+
+ exact_arc_length: true
     
  # Obstacles
     
@@ -56,9 +60,9 @@ TebLocalPlannerROS:
  costmap_converter_rate: 5 # default : 5
 
  #Reduce_velocity_near_obstacles:
- obstacle_proximity_ratio_max_vel: 0.65
- obstacle_proximity_lower_bound: 0.5
- obstacle_proximity_upper_bound: 0.2
+ obstacle_proximity_ratio_max_vel: 0.5
+ obstacle_proximity_lower_bound: 1.0
+ obstacle_proximity_upper_bound: 6.0
 
  # Optimization
     
@@ -68,12 +72,13 @@ TebLocalPlannerROS:
  optimization_verbose: False
  penalty_epsilon: 0.1
  weight_max_vel_x: 2
- weight_max_vel_theta: 1
- weight_acc_lim_x: 20
- weight_acc_lim_theta: 15
+ weight_max_vel_theta: 1.0
+ weight_acc_lim_x: 2.0
+ weight_acc_lim_theta: 1.0
  weight_kinematics_nh: 1000
  weight_kinematics_forward_drive: 800
  weight_kinematics_turning_radius: 1
+ weight_inflation: 0.5
  weight_optimaltime: 1
  weight_obstacle: 100
 #  weight_dynamic_obstacle: 10 # not in use yet
@@ -81,7 +86,7 @@ TebLocalPlannerROS:
 
  # Homotopy Class Planner
 
- enable_homotopy_class_planning: False # I turned it of because of  #[ WARN] [1654158502.701863979]: Control loop missed its desired rate of 10.0000Hz... the loop actually took 0.1477 seconds
+ enable_homotopy_class_planning: false # I turned it of because of  #[ WARN] [1654158502.701863979]: Control loop missed its desired rate of 10.0000Hz... the loop actually took 0.1477 seconds
  enable_multithreading: True
  simple_exploration: False
  max_number_classes: 4

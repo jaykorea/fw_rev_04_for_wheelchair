@@ -241,7 +241,7 @@
         <arg name="optimizer_gravity_sigma"             value="0.3"/>
         <arg name="grid_from_depth"                     value="false"/>
         <arg name="reg_force_3dof"                      value="$(arg reg_force_3dof)"/>
-        <arg name="reg_strategy"                        value="1"/>  
+        <arg name="reg_strategy"                        value="2"/>  
         <arg name="rtabmap_detectionrate"               value="2"/>
         <arg name="rgbd_angularupdate"                  value="0.01"/>    <!-- Update map only if the robot is moving -->
         <arg name="rgbd_linearupdate"                   value="0.01"/>    <!-- Update map only if the robot is moving -->
